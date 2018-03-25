@@ -7,11 +7,14 @@ runtime 系统方法替换(NSArray、NSMutableArray、NSDictionary、NSMutableDi
 网上搜索了一下调用方法，发现并没有执行，好奇怪...
 
 后来发现，__NSArrayI才是NSArray真正的类，__NSDictionaryM才是NSMutableDictionary真正的类。
+
 参考资料：http://www.cocoachina.com/ios/20160121/15076.html
+
 列举一些常用的类簇的“真身”：
 ![](https://github.com/bjheweihua/runtime_exchange_method/blob/master/demo.png)  
 
 ### 代码实现
+
 1. 方法替换封装
 ```
 #import "NSObject+Swizzle.h"
@@ -40,6 +43,7 @@ runtime 系统方法替换(NSArray、NSMutableArray、NSDictionary、NSMutableDi
 #endif
 @end
 ```
+
 
 2. 系统方法替换具体实现
 ```
