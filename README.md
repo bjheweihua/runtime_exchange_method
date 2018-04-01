@@ -11,7 +11,16 @@ runtime 系统方法替换(NSArray、NSMutableArray、NSDictionary、NSMutableDi
 参考资料：http://www.cocoachina.com/ios/20160121/15076.html
 
 列举一些常用的类簇的“真身”：
-![](https://github.com/bjheweihua/runtime_exchange_method/blob/master/demo.png)  
+![](https://github.com/bjheweihua/runtime_exchange_method/blob/master/demo.png)
+
+[[NSArray alloc] init].class;              -> __NSArray0
+@[@1].class;                                   ->  __NSSingleObjectArrayI
+[NSArray new].class;                       ->  __NSArray0
+NSArray.class;                                ->  NSArray
+@[].class;                                         ->  __NSArray0
+[[NSMutableArray alloc] init].class; ->  __NSArrayM
+[NSMutableArray new].class;         ->  __NSArrayM
+NSMutableArray.class;                  -> NSMutableArray
 
 ### 代码实现
 
@@ -61,7 +70,7 @@ runtime 系统方法替换(NSArray、NSMutableArray、NSDictionary、NSMutableDi
         
         Class cls = objc_getClass("__NSArrayI");
         [cls jr_swizzleMethod:@selector(objectAtIndex:) withMethod:@selector(objectAtIndex_replace:)];
-        //这里已经实现了方法替换，objectAtIndex:会调用objectAtIndexCheck:
+        //这里已经实现了方法替换，objectAtIndex:会调用objectAtIndex_replace:
     });
 }
 
