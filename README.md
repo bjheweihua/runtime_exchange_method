@@ -13,14 +13,17 @@ runtime 系统方法替换(NSArray、NSMutableArray、NSDictionary、NSMutableDi
 列举一些常用的类簇的“真身”：
 ![](https://github.com/bjheweihua/runtime_exchange_method/blob/master/demo.png)
 
-[[NSArray alloc] init].class;              -> __NSArray0
-@[@1].class;                                   ->  __NSSingleObjectArrayI
-[NSArray new].class;                       ->  __NSArray0
-NSArray.class;                                ->  NSArray
-@[].class;                                         ->  __NSArray0
+```
+NSArray Class Clusters
+[[NSArray alloc] init].class;        -> __NSArray0
+@[@1].class;                         ->  __NSSingleObjectArrayI
+[NSArray new].class;                 ->  __NSArray0
+NSArray.class;                       ->  NSArray
+@[].class;                           ->  __NSArray0
 [[NSMutableArray alloc] init].class; ->  __NSArrayM
-[NSMutableArray new].class;         ->  __NSArrayM
-NSMutableArray.class;                  -> NSMutableArray
+[NSMutableArray new].class;          ->  __NSArrayM
+NSMutableArray.class;                -> NSMutableArray
+```
 
 ### 代码实现
 
