@@ -7,9 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray<ObjectType> (Swizzle)
+@interface NSArray<ObjectType> (NSArraySwizzle)
 @end
 
-
-@interface NSMutableArray<ObjectType> (Swizzle)
+@interface NSMutableArray<ObjectType> (NSMutableArraySwizzle)
 @end
+

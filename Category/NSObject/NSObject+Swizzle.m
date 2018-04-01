@@ -13,16 +13,16 @@
 
 + (BOOL)jr_swizzleMethod:(SEL)origSel withMethod:(SEL)aftSel {
     
-    Method originMethod = class_getInstanceMethod(self, origSel);
-    Method newMethod = class_getInstanceMethod(self, aftSel);
+    Method originMethod = class_getInstanceMethod(self.class, origSel);
+    Method newMethod = class_getInstanceMethod(self.class, aftSel);
     
     //必须两个Method都要拿到
     if(originMethod && newMethod) {
         
-        if(class_addMethod(self, origSel, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
+        if(class_addMethod(self.class, origSel, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
             
             //实现成功添加后
-            class_replaceMethod(self, aftSel, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
+            class_replaceMethod(self.class, aftSel, method_getImplementation(originMethod), method_getTypeEncoding(originMethod));
         }
         else {
             method_exchangeImplementations(originMethod, newMethod);
